@@ -8,12 +8,9 @@ const { isLoggedIn, forwardAuthenticated } = require('../config/auth');
 // Login route
 router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
 
-// Register route
-router.get('/register', forwardAuthenticated, (req, res) => res.render('register'));
-
 // Handling  Register logic 
 router.post('/register',forwardAuthenticated, (req, res) => {
-    const { fname, lname, email, password, confirm_password } = req.body;
+    const { fname, email, password, confirm_password } = req.body;
     
     let errors = [];
 
@@ -25,15 +22,40 @@ router.post('/register',forwardAuthenticated, (req, res) => {
         errors.push({ msg: 'Passwords do not match' });
     }
 
-    if (password.length < 6) {
-        errors.push({ msg: 'Password must be at least 6 characters' });
+    if (password.length < 8) {
+        errors.push({ msg: 'Password must be at least 8 characters' });
     }
 
+    let special_char = 0;
+    let uppercase = 0;
+    let lowercase = 0;
+    let digit = 0;
+    for(let i = 0; i<password.length; i++)
+    {
+      let char = password[i];
+      if(char == '@' || char == '#' || char == '$' || char == '%' || char == '^' || char == '&')
+        special_char++;
+      if(char <= 'Z' && char >= 'A')
+        uppercase++;
+      if(char <= 'z' && char >= 'a')
+        lowercase++;
+      if(char <= '9' && char >= '0')
+        digit++;
+    }
+
+    if(!special_char)
+      errors.push({ msg: 'Password must contain atleast one special charecter. [@ # $ % ^ & *]' });
+    else if(!uppercase)
+      errors.push({ msg: 'Password must contain atleast one uppercase letter.' });
+    else if(!lowercase)
+      errors.push({ msg: 'Password must contain atleast one lowercase letter.' });
+    else if(!digit)
+      errors.push({ msg: 'Password must contain atleast one digit.' });
+
     if (errors.length > 0) {
-        res.render('register', {
+        res.render('login', {
             errors,
             fname,
-            lname,
             email,
             password,
             confirm_password
@@ -41,20 +63,10 @@ router.post('/register',forwardAuthenticated, (req, res) => {
     } else {
         User.findOne({ email: email }).then(user => {
         if (user) {
-            errors.push({ msg: 'Email already exists' });
-            res.render('register', {
-            errors,
-            fname,
-            lname,
-            email,
-            password,
-            confirm_password,
-            
-            });
+            res.json({error_msg: 'Email already exists' });
         } else {
             const newUser = new User({
                 fname: fname.trim(),
-                lname: lname.trim(),
                 email: email.trim(),
                 password: password
             });
@@ -66,11 +78,7 @@ router.post('/register',forwardAuthenticated, (req, res) => {
                     newUser
                     .save()
                     .then(user => {
-                        req.flash(
-                        'success_msg',
-                        'You are now registered and can log in'
-                        );
-                        res.redirect('/user/login');
+                        res.json({redirect: '/homepage'});
                     })
                     .catch(err => console.log(err));
                 });

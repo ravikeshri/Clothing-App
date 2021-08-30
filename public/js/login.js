@@ -18,6 +18,7 @@ $('#confirm-password').focusin(function(){
   $('#confirm-password').siblings().css("display" , "block");
 });
 
+let valid_password = false;
 function validatePassword(element)
 {
   let el = $(element);
@@ -60,6 +61,7 @@ function validatePassword(element)
       $(element).siblings().html('Password must contain atleast one digit.');
     else
     {
+        valid_password = true;
         $(element).siblings().html('Password is valid.');
         $(element).siblings().css("background", "#62BE67");
     }
@@ -72,19 +74,39 @@ $(".register-form").submit(function(e){
         let email = $('.register-form #email').val();
         let full_name = $('.register-form #fname').val();
         let password = $('.register-form #password').val();
-        let confirm_password = $('.register-from #confirm-password').val();
-        console.log(`${email}, ${full_name}, ${password}, ${confirm_password}`);
-        // compare password equality here, throw an error if mismatch else send data via ajax request
-        $.ajax({
-        url: '/register',
-        data: {
-            fname : full_name,
-            email : email,
-            password : password
-        },
-        type: 'POST',
-        success: function (results) {
+        let confirm_password = $('.register-form #confirm-password').val();
 
+        // compare password equality here, throw an error if mismatch else send data via ajax request
+        let password_match = false;
+        if(password === confirm_password) {
+          password_match = true;
         }
-      };
+
+        if(valid_password && password_match) {
+          $.ajax({
+          url: '/user/register',
+          data: {
+              fname : full_name,
+              email : email,
+              password : password,
+              confirm_password : confirm_password
+          },
+          type: 'POST',
+          success: function (results) {
+            console.log(results);
+            if (results.redirect) {
+              // results.redirect contains the string URL to redirect to
+              window.location.href = results.redirect;
+            }
+          }
+          });
+        } else if(!password_match) {
+          $('.register-form #confirm-password').siblings().css("display", "block");
+          $('.register-form #confirm-password').siblings().css("background", "#E55D5D");
+          $('.register-form #confirm-password').siblings().html('Password does not match.');
+        } else if(!valid_password) {
+          $('.register-form #confirm-password').siblings().css("display", "block");
+          $('.register-form #confirm-password').siblings().css("background", "#E55D5D");
+          $('.register-form #confirm-password').siblings().html('Password is not valid.');
+        }
 });
