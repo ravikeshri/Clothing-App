@@ -72,7 +72,9 @@ $(".register-form").submit(function(e){
         let email = $('.register-form #email').val();
         let full_name = $('.register-form #fname').val();
         let password = $('.register-form #password').val();
-        console.log(`${email}, ${full_name}, ${password}`);
+        let confirm_password = $('.register-from #confirm-password').val();
+        console.log(`${email}, ${full_name}, ${password}, ${confirm_password}`);
+        // compare password equality here, throw an error if mismatch else send data via ajax request
         $.ajax({
         url: '/register',
         data: {
