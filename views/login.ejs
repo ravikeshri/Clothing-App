@@ -1,8 +1,55 @@
-<form action="/user/login" method="POST">
-    <%- include("partials/messages")%>
-    <label for="email">Email: </label>
-    <input type="email" name="email" id="email" />
-    <label for="password">Password: </label>
-    <input type="password" name="password" id="password" />
-    <input type="submit" value="Submit" />
-</form>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/login.css">
+  </head>
+  <body>
+    <div class="background">
+      <div class="left">
+        <div class="foreground">
+          <div class="form-container">
+            <div class="welcome-text">
+              <h1>MAXIMIZERS</h1>
+              <p>Welcome to your one stop shop for all things street wear</p>
+            </div>
+            <div class="form">
+              <!-- Registration Form -->
+              <form class="register-form" action="/register" method="POST">
+                <input type="text" name="fname" id="fname" placeholder="Name"/>
+                <input type="email" name="email" id="email" placeholder="Email"/>
+                <div class="password-container">
+                    <input id="password" type="password" name="password" placeholder="Password" onkeyup="validatePassword(this);"/>
+                    <div class="indicator"></div>
+                </div>
+                <div class="password-container">
+                    <input id="confirm-password" type="password" placeholder="Confirm Password" onkeyup="validatePassword(this);"/>
+                    <div class="indicator"></div>
+                </div>
+                <button>Sign Up</button>
+                <p class="message">Already registered? <a href="#">Sign In</a></p>
+              </form>
+
+              <!-- Login Form -->
+              <form class="login-form" action="/user/login" method="POST">
+                <%- include("partials/messages")%>
+                <input type="email" placeholder="Email" name="email" id="email"/>
+                <input type="password" placeholder="Password" name="password" id="password"/>
+                <button>Sign In</button>
+                <p class="message">Not registered? <a href="#">Create an account</a></p>
+              </form>
+            </div>
+          </div>
+          <div class="banner">
+
+          </div>
+        </div>
+      </div>
+      <div class="right"></div>
+    </div>
+  </body>
+  <script type="text/javascript" src="/js/_thirdparty/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="/js/login.js"></script>
+</html>

@@ -8,7 +8,7 @@ const { isLoggedIn, forwardAuthenticated } = require('../config/auth');
 router.get('/', forwardAuthenticated, (req, res) => res.send('A landing page!'));
 
 // Homepage
-router.get('/homepage', isLoggedIn, (req, res) => { 
+router.get('/homepage', isLoggedIn, (req, res) => {
     res.render('homepage', {user: req.user});
 });
 
