@@ -92,11 +92,15 @@ $(".register-form").submit(function(e){
               confirm_password : confirm_password
           },
           type: 'POST',
-          success: function (results) {
-            console.log(results);
-            if (results.redirect) {
+          success: function (result) {
+            if(result.redirect) {
               // results.redirect contains the string URL to redirect to
-              window.location.href = results.redirect;
+              window.location.href = result.redirect;
+            } else if(result.error_msg ) {
+              // result.error_msg contains error
+              $('.register-form #confirm-password').siblings().css("display", "block");
+              $('.register-form #confirm-password').siblings().css("background", "#E55D5D");
+              $('.register-form #confirm-password').siblings().html(result.error_msg);
             }
           }
           });

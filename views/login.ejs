@@ -34,9 +34,9 @@
 
               <!-- Login Form -->
               <form class="login-form" action="/user/login" method="POST">
-                <%- include("partials/messages")%>
                 <input type="email" placeholder="Email" name="email" id="email"/>
                 <input type="password" placeholder="Password" name="password" id="password"/>
+                <%- include( "./partials/messages") %>
                 <button>Sign In</button>
                 <p class="message">Not registered? <a href="#">Create an account</a></p>
               </form>
