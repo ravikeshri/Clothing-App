@@ -3,108 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Homepage</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/_thirdparty/bootstrap-grid.min.css"/>
-    <link rel="stylesheet" href="/css/_thirdparty/font-awesome.min.css"/>
-    <link rel="stylesheet" href="/css/_general/sidebar.css"/>
-    <link rel="stylesheet" href="/css/_general/searchbar.css"/>
+    <%- include('partials/header.ejs') %>
     <link rel="stylesheet" href="/css/homepage.css"/>
   </head>
   <body>
-    <!-- Start of Sidemenu -->
-    <div class="zeynep">
-    <ul>
-    	<li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-    	<li class="has-submenu">
-    		<a href="#" data-submenu="categories">Categories</a>
-
-    		<div id="categories" class="submenu">
-    		  <div class="submenu-header">
-    			<a href="#" data-submenu-close="categories">Main Menu</a>
-    		  </div>
-
-    		  <label>Categories</label>
-
-    		  <ul>
-      			<li class="has-submenu">
-      			  <a href="#" data-submenu="mens">Mens</a>
-
-      			  <div id="mens" class="submenu">
-      				<div class="submenu-header">
-      				  <a href="#" data-submenu-close="mens">Categories</a>
-      				</div>
-
-      				<label>Mens</label>
-
-      				<ul>
-      				  <li><a href="#">Graphic T-Shirts</a></li>
-      				  <li><a href="#">Bottoms</a></li>
-      				  <li><a href="#">Outerwear</a></li>
-      				  <li><a href="#">Headwear</a></li>
-      				  <li><a href="#">Socks</a></li>
-      				  <li><a href="#">Accessories</a></li>
-      				</ul>
-      			  </div>
-      			</li>
-
-            <li class="has-submenu">
-      			  <a href="#" data-submenu="womens">Womens</a>
-
-      			  <div id="womens" class="submenu">
-      				<div class="submenu-header">
-      				  <a href="#" data-submenu-close="womens">Categories</a>
-      				</div>
-
-      				<label>Womens</label>
-
-      				<ul>
-      				  <li><a href="#">Graphic T-Shirts</a></li>
-      				  <li><a href="#">Bottoms</a></li>
-      				  <li><a href="#">Outerwear</a></li>
-      				  <li><a href="#">Headwear</a></li>
-      				  <li><a href="#">Socks</a></li>
-      				  <li><a href="#">Accessories</a></li>
-      				</ul>
-      			  </div>
-      			</li>
-      		 </ul>
-    	  </div>
-      </li>
-    </ul>
-  </div>
-  <!-- End of Side menu -->
-
+    <%- include('partials/sidebar.ejs') %>
     <main>
-      <!-- Top Navigation bar -->
-      <nav>
-        <div class="side-menu-btn">
-          <div class="side-icon"></div>
-        </div>
-        <div class="nav-bar">
-          <div class="logo">MAXIMIZERS</div>
-
-          <div class="nav-buttons">
-            <form class="search-container" action="#">
-              <input id="search-box" type="text" class="search-box" name="q" placeholder="Search" />
-              <label for="search-box"><i class="fa fa-search" aria-hidden="true" style="color : black; margin-left : -30px;"></i></label>
-              <input type="submit" id="search-submit" />
-            </form>
-            <ul class="icon-list">
-              <li><div class="nav-icon favorite-icon"></div></li>
-              <li><div class="nav-icon cart-icon"></div></li>
-              <li><button id="login-button" type="button" name="button">Login In</button></li>
-
-              <!-- based on the session change UI from login to profile button -->
-              
-              <!-- based on the session change UI from login to profile button -->
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <!-- End of Top Navigation Bar -->
-
+      <%- include('partials/navbar.ejs') %>
 
       <!-- Banner -->
       <div class="jumbo-box">
@@ -112,7 +17,7 @@
           <div class="banner-content">
             <h1>Maximize your style</h1>
             <p>with out latest collection of streetwear appearals in great discount prices.</p>
-            <button class="banner-btn" type="button" name="button">View Collection</button>
+            <button onclick="location.href='/listing'" class="banner-btn" type="button" name="button">View Collection</button>
           </div>
           <div class="banner-image"></div>
         </div>
@@ -141,59 +46,7 @@
       </div>
       <!-- End of Services -->
 
-      <!-- Site footer -->
-      <footer class="site-footer bootstrap-wrapper">
-        <div class="container">
-        <div class="row">
-          <div class="col-sm-12 col-md-6">
-            <h6>About</h6>
-            <p class="text-justify">
-              This is e-commerce project is developed by the team <i>Maximizers</i> by the combined effort of its team members :
-              Ashish, Medha, Sandeep and Ravi as per their carriculam requirement for MCA 5th semester e-commerce lab. The project topic
-              is of a clothing store, where users can purchase clothing goods and the administrator can perform inventory management tasks.
-            </p>
-          </div>
-
-          <div class="col-xs-6 col-md-3">
-            <h6>Categories</h6>
-            <ul class="footer-links">
-              <li><a href="#">Mens</a></li>
-              <li><a href="#">Womens</a></li>
-              <li><a href="#">Kids</a></li>
-              <li><a href="#">New Arrival</a></li>
-              <li><a href="#">Accessories</a></li>
-            </ul>
-          </div>
-
-          <div class="col-xs-6 col-md-3">
-            <h6>Quick Links</h6>
-            <ul class="footer-links">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-            </ul>
-          </div>
-        </div>
-        <hr>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8 col-sm-6 col-xs-12">
-              <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
-           <a href="#">Maximizers</a>.
-              </p>
-            </div>
-
-            <div class="col-md-4 col-sm-6 col-xs-12">
-              <ul class="social-icons">
-                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
-                <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
+    <%- include('partials/footer.ejs') %>
     </main>
 
     <div class="zeynep-overlay"></div>

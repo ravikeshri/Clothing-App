@@ -12,4 +12,9 @@ router.get('/homepage', isLoggedIn, (req, res) => {
     res.render('homepage', {user: req.user});
 });
 
+// Listing
+router.get('/listing', isLoggedIn, (req, res) => {
+    res.render('listing', {user: req.user});
+});
+
 module.exports = router;

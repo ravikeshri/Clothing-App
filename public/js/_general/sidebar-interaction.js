@@ -21,5 +21,13 @@ $(function() {
   $('.side-menu-btn').on('click', function () {
     zeynep.open()
   });
+});
 
+$(window).scroll(function(){
+    let scroll_pos = document.documentElement.scrollTop;
+    if(scroll_pos > 100)
+      // fix navbar to the top.
+      $('nav').addClass('active');
+    else
+      $('nav').removeClass('active');
 });

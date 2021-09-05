@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Our Products</title>
+    <%- include('partials/header.ejs') %>
+    <link rel="stylesheet" href="/css/listing.css"/>
+  </head>
+  <body>
+    <%- include('partials/sidebar.ejs') %>
+    <main>
+      <%- include('partials/navbar.ejs') %>
+      <!-- Category Selector -->
+      <div class="bootstrap-wrapper">
+        <div class="jumbo-box">
+          <h1>Our Products</h1>
+          <div class="row category-list">
+            <div class="col-md-2">
+              <div class="cat-icon tshirt-icon"></div>
+              <h4>Tshirt</h4>
+            </div>
+            <div class="col-md-2">
+              <div class="cat-icon bottom-icon"></div>
+              <h4>Bottoms</h4>
+            </div>
+            <div class="col-md-2">
+              <div class="cat-icon outerwear-icon"></div>
+              <h4>Outerwear</h4>
+            </div>
+            <div class="col-md-2">
+              <div class="cat-icon headwear-icon"></div>
+              <h4>Headwear</h4>
+            </div>
+            <div class="col-md-2">
+              <div class="cat-icon socks-icon"></div>
+              <h4>Socks</h4>
+            </div>
+            <div class="col-md-2">
+              <div class="cat-icon accessories-icon"></div>
+              <h4>Accessories</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Category Selector -->
+
+      <!-- Item List -->
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+      <section class="hero-section">
+        <div class="card-grid">
+          <a class="card" href="#">
+            <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1557177324-56c542165309?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)"></div>
+            <div class="card__content">
+              <p class="card__category">Category</p>
+              <h3 class="card__heading">Example Card Heading</h3>
+            </div>
+          </a>
+          <a class="card" href="#">
+            <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1557187666-4fd70cf76254?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)"></div>
+            <div class="card__content">
+              <p class="card__category">Category</p>
+              <h3 class="card__heading">Example Card Heading</h3>
+            </div>
+          </a>
+          <a class="card" href="#">
+            <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1556680262-9990363a3e6d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)"></div>
+            <div class="card__content">
+              <p class="card__category">Category</p>
+              <h3 class="card__heading">Example Card Heading</h3>
+            </div>
+          </li>
+          <a class="card" href="#">
+            <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1557004396-66e4174d7bf6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)"></div>
+            <div class="card__content">
+              <p class="card__category">Category</p>
+              <h3 class="card__heading">Example Card Heading</h3>
+            </div>
+          </a>
+        <div>
+      </section>
+      <!-- End of Item list -->
+
+
+      <%- include('partials/footer.ejs') %>
+    </main>
+    <div class="zeynep-overlay"></div>
+  </body>
+  <script type="text/javascript" src="/js/_thirdparty/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="/js/_thirdparty/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/_thirdparty/zeynep.min.js"></script>
+  <script type="text/javascript" src="/js/_general/sidebar-interaction.js"></script>
+</html>

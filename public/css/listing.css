@@ -1,0 +1,180 @@
+.jumbo-box
+{
+  margin: 0px;
+  width : 100%;
+  padding : 0px 100px;
+  box-sizing: border-box;
+}
+h1{
+  color : #333;
+  margin-top: 50px;
+}
+h4
+{
+  margin : 10px 0px;
+}
+.category-list
+{
+  margin-top : 50px;
+  min-height : 100px;
+  width : 100%;
+  background: white;
+  color : #333;
+  text-align: center;
+}
+.bootstrap-wrapper .row
+{
+  margin-left: 0px;
+}
+.category-list > div
+{
+  padding-top : 20px;
+  padding-bottom : 20px;
+  cursor: pointer;
+}
+.category-list > div:hover
+{
+    background: #393d45;
+    color : white;
+}
+.category-list > div:hover .cat-icon
+{
+    opacity: .8;
+    filter : invert(0%);
+}
+.cat-icon
+{
+  height : 50px;
+  width: 50px;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin : 0px auto;
+  opacity: .2;
+  filter : invert(100%);
+}
+.tshirt-icon
+{
+    background-image: url('../media/icons/tshirt.png');
+}
+.bottom-icon
+{
+    background-image: url('../media/icons/bottom.png');
+}
+.outerwear-icon
+{
+    background-image: url('../media/icons/outerwear.png');
+}
+.headwear-icon
+{
+    background-image: url('../media/icons/headwear.png');
+}
+.socks-icon
+{
+    background-image: url('../media/icons/sock.png');
+}
+.accessories-icon
+{
+    background-image: url('../media/icons/accessories.png');
+}
+
+
+
+
+
+
+
+
+
+:root {
+  --background-dark: #2d3548;
+  --text-light: rgba(255, 255, 255, 0.6);
+  --text-lighter: rgba(255, 255, 255, 0.9);
+  --spacing-s: 8px;
+  --spacing-m: 16px;
+  --spacing-l: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 64px;
+  --width-container: 1200px;
+}
+
+.hero-section {
+  font-family: "Montserrat", sans-serif;
+  align-items: flex-start;
+  display: flex;
+  min-height: 100%;
+  justify-content: center;
+  padding: 50px 100px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-column-gap: var(--spacing-l);
+  grid-row-gap: var(--spacing-l);
+  max-width: var(--width-container);
+  width: 100%;
+}
+
+@media (min-width: 540px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .card-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  list-style: none;
+  position: relative;
+}
+
+.card:before {
+  content: "";
+  display: block;
+  padding-bottom: 150%;
+  width: 100%;
+}
+
+.card__background {
+  background-size: cover;
+  background-position: center;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform-origin: center;
+  transform: scale(1) translateZ(0);
+  transition: all .2s linear;
+}
+
+.card:hover .card__background {
+  transform: scale(1.05) translateZ(0);
+}
+
+.card__content {
+  left: 0;
+  padding: var(--spacing-l);
+  position: absolute;
+  top: 0;
+}
+
+.card__category {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-s);
+  text-transform: uppercase;
+}
+
+.card__heading {
+  color: var(--text-lighter);
+  font-size: 1.9rem;
+  text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+  line-height: 1.4;
+  word-spacing: 100vw;
+}
