@@ -1,0 +1,137 @@
+.jumbo-box
+{
+  margin: 0px;
+  width : 100%;
+  padding : 0px 100px;
+  box-sizing: border-box;
+}
+.product-body{
+  background: white;
+  min-height : 600px;
+  padding : 40px 20px;
+  color : #333;
+  display: flex;
+  align-items: center;
+}
+.product-image
+{
+    width: 30%;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.product-detail
+{
+  width : 70%;
+  padding : 0px 40px;
+}
+.product-body h1
+{
+  margin : 0px;
+}
+.categories{
+  padding: 10px 0px;
+  display: flex;
+}
+.categories > li
+{
+  font-size: 12px;
+  margin-right: 10px;
+  margin-top : 10px;
+  padding : 5px 10px;
+  .height : 30px;
+  .width: 80px;
+  border : 1px solid #333;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.rating-container{
+  display: flex;
+  align-items: center;
+}
+.rating-container > p{
+  font-size: 14px;
+  margin-left: 20px;
+}
+.rating > li {
+  cursor: default;
+  display: inline-block;
+  font-weight: 100;
+  font-size: 25px;
+  list-style-type: none;
+}
+.star{
+  /* normal state */
+  color: #ccc;
+}
+.star.active {
+  color: #333;
+}
+.bootstrap-wrapper li{
+  cursor: pointer;
+}
+.bootstrap-wrapper > .row:last-child
+{
+  margin-top : 20px;
+}
+.color-list, .size-list
+{
+  display: flex;
+}
+.color-list > li
+{
+  height : 25px;
+  width: 25px;
+  margin-right : 10px;
+  border-radius: 100%;
+  background: #ccc;
+}
+.size-list > li
+{
+  margin-right : 10px;
+  color : #ccc;
+}
+.quantity-control > button
+{
+  height : 50px;
+  width: 50px;
+  border : none;
+  background: #f5f7fb;
+  font-size: 16px;
+}
+.quantity-control > button:first-child, .quantity-control > button:last-child
+{
+  cursor: pointer;
+}
+.quantity-control > button:first-child:hover, .quantity-control > button:last-child:hover
+{
+
+}
+#add-cart{
+  height : 50px;
+  width: 200px;
+  background: none;
+  border: 3px solid #ecbe31;
+  font-weight: bold;
+  color : #ecbe31;
+  cursor: pointer;
+}
+#fav{
+  font-size : 40px;
+  .line-height: 0px;
+  margin: 0px;
+  color : #ccc;
+  cursor: pointer;
+}
+@media (max-width: 1195px) {
+  #fav{
+    margin-left : 100px;
+  }
+}
+@media (max-width: 1000px) {
+  .jumbo-box
+  {
+    padding : 0px 0px;
+
+}

@@ -141,6 +141,7 @@ h4
 .card {
   list-style: none;
   position: relative;
+  overflow: hidden;
 }
 
 .card:before {
@@ -164,7 +165,7 @@ h4
 }
 
 .card:hover .card__background {
-  background-size: 200% 200%;
+  transform: scale(2) translateZ(0);
 }
 .card:hover .card__content {
   opacity: 1;
@@ -203,12 +204,13 @@ h4
   width : 120px;
   height : 40px;
   background: none;
-  border: 3px solid white;
-  color : white;
-  cursor: pointer
+  border: 3px solid #c79a11;
+  color : #c79a11;
+  cursor: pointer;
+  font-weight : 800;
 }
 
 .card__content > button:hover{
-  background : white;
-  color : black;
+  background : #c79a11;
+  color : white;
 }

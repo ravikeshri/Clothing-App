@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Our Products</title>
+    <%- include('partials/header.ejs') %>
+    <link rel="stylesheet" href="/css/product.css"/>
+  </head>
+  <body>
+    <%- include('partials/sidebar.ejs') %>
+    <main>
+      <%- include('partials/navbar.ejs') %>
+      <!-- Product Body -->
+      <div class="jumbo-box">
+        <div class="product-body">
+          <div class="product-image" style="background-image: url(https://static.zara.net/photos///2021/I/0/2/p/9240/303/712/2/w/563/9240303712_1_1_1.jpg?ts=1630068640859)"></div>
+          <div class="product-detail">
+            <h1>Leather Jacket</h1>
+            <ul class="categories">
+              <li>Men</li>
+              <li>Outerwear</li>
+            </ul>
+            <div class="rating-container">
+              <ul class="rating">
+                <li class="star active">&starf;</li>
+                <li class="star active">&starf;</li>
+                <li class="star active">&starf;</li>
+                <li class="star">&starf;</li>
+                <li class="star">&starf;</li>
+              </ul>
+              <p>(1.5k customer review)</p>
+            </div>
+            <p>
+              Lorem Ipsum has been the industry's standard dummy text ever since
+              the 1500s, when an unknown printer took a galley of type and scrambled
+              it to make a type specimen book. It has survived not only five
+              centuries.
+            </p>
+            <div class="bootstrap-wrapper">
+              <div class="row">
+                <div class="col-md-4">
+                  <p>Price :</p>
+                  <h3>$117.99</h3>
+                </div>
+                <div class="col-md-4">
+                  <p>Color :</p>
+                  <ul class="color-list">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                </div>
+                <div class="col-md-4">
+                  <p>Size :</p>
+                  <ul class="size-list">
+                    <li>S</li>
+                    <li>M</li>
+                    <li>L</li>
+                    <li>XL</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 quantity-control">
+                  <button type="button" name="button">-</button>
+                  <button type="button" name="button">1</button>
+                  <button type="button" name="button">+</button>
+                </div>
+                <div class="col-md-4">
+                  <button id="add-cart" type="button" name="button">Add to Cart</button>
+                </div>
+                <div class="col-md-4">
+                  <p id="fav">&#x2764;</p>
+                </div>
+              </div>
+            </div>
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- End of Product Body -->
+
+
+      <%- include('partials/footer.ejs') %>
+    </main>
+    <div class="zeynep-overlay"></div>
+  </body>
+  <script type="text/javascript" src="/js/_thirdparty/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="/js/_thirdparty/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/_thirdparty/zeynep.min.js"></script>
+  <script type="text/javascript" src="/js/_general/sidebar-interaction.js"></script>
+  <script type="text/javascript" src="/js/Product/Product_core.js"></script>
+</html>
