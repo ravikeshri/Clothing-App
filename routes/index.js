@@ -12,14 +12,4 @@ router.get('/homepage', isLoggedIn, (req, res) => {
     res.render('homepage', {user: req.user});
 });
 
-// Listing
-router.get('/listing', isLoggedIn, (req, res) => {
-    res.render('listing', {user: req.user});
-});
-
-// product
-router.get('/listing/product/:id', isLoggedIn, (req, res) => {
-    res.render('product', {user: req.user});
-});
-
 module.exports = router;

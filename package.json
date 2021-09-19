@@ -4,7 +4,6 @@
   "description": "E commerce project build during the 5th semester of our MCA",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
   "repository": {
@@ -20,13 +19,18 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "cloudinary": "^1.27.0",
+    "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-flash": "0.0.2",
     "express-session": "^1.17.2",
     "mongoose": "^6.0.2",
-    "nodemon": "^2.0.12",
+    "multer": "^1.4.3",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }

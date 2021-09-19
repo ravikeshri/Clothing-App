@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Portal</title>
+</head>
+<body>
+    <h1>Add new product</h1>
+
+    <form action="/admin/listing/new" method="POST" enctype="multipart/form-data">
+        <label for="name">Product Name: </label>
+        <input type="text" name="name" id="name" required /> <br>
+
+        <label for="description">Description: </label>
+        <input type="text" name="description" id="description" required /> <br>
+
+        <label for="gender">Gender: </label>
+        <select name="gender" id="gender">
+            <option value="man">Man</option>
+            <option value="woman">Woman</option>
+            <option value="unisex">Unisex</option>
+        </select> <br>
+        
+        <label for="category">Category: </label>
+        <select name="category" id="category">
+            <option value="upperwear">Upperwear</option>
+            <option value="bottoms">Bottoms</option>
+            <option value="outerwear">Outerwear</option>
+            <option value="knitwear">Knitwear</option>
+            <option value="accessories">Accessories</option>
+        </select> <br>
+
+        <label for="price">Price: </label>
+        <input type="number" name="price" id="price" /> <br>
+
+        <!-- Stocks starts here -->
+        <h5>Stocks:</h5>
+
+        <!-- 1 -->
+        <label for="colour[0][name]">Colour[0][name]: </label>
+        <input type="text" name="colour[0][name]" required /> <br>
+        <label for="colour[0][code]">Colour[0][code]: </label>
+        <input type="color" name="colour[0][code]" required /> <br>
+
+        <label for="_s[0]">S: </label>
+        <input type="number" name="_s[0]" required /> <br>
+        <label for="_m[0]">M: </label>
+        <input type="number" name="_m[0]" required /> <br>
+        <label for="_l[0]">L: </label>
+        <input type="number" name="_l[0]" required /> <br>
+        <label for="_xl[0]">XL: </label>
+        <input type="number" name="_xl[0]" required /> <br>
+        
+        <label for="images[0]">Images[0]: </label>
+        <input type="file" name="images[0]" id="images[0]" multiple required /> <br> <br>
+        
+        <!-- 2 -->
+        <label for="colour[1][name]">Colour[1][name]: </label>
+        <input type="text" name="colour[1][name]" /> <br>
+        <label for="colour[1][code]">Colour[1][code]: </label>
+        <input type="color" name="colour[1][code]" /> <br>
+
+        <label for="_s[1]">S: </label>
+        <input type="number" name="_s[1]" /> <br>
+        <label for="_m[1]">M: </label>
+        <input type="number" name="_m[1]" /> <br>
+        <label for="_l[1]">L: </label>
+        <input type="number" name="_l[1]" /> <br>
+        <label for="_xl[1]">XL: </label>
+        <input type="number" name="_xl[1]" /> <br>
+        
+        <label for="images[1]">Images[1]: </label>
+        <input type="file" name="images[1]" id="images[1]" multiple/> <br> <br>
+        
+        <!-- 3 -->
+        <label for="colour[2][name]">Colour[2][name]: </label>
+        <input type="text" name="colour[2][name]" /> <br>
+        <label for="colour[2][code]">Colour[2][code]: </label>
+        <input type="color" name="colour[2][code]" /> <br>
+
+        <label for="_s[2]">S: </label>
+        <input type="number" name="_s[2]" /> <br>
+        <label for="_m[2]">M: </label>
+        <input type="number" name="_m[2]" /> <br>
+        <label for="_l[2]">L: </label>
+        <input type="number" name="_l[2]" /> <br>
+        <label for="_xl[2]">XL: </label>
+        <input type="number" name="_xl[2]" /> <br>
+        
+        <label for="images[2]">Images[2]: </label>
+        <input type="file" name="images[2]" id="images[2]" multiple/> <br> <br>
+        
+        <!-- Stocks ends here -->
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+

@@ -3,17 +3,17 @@ const   express         = require("express"),
         passport        = require("passport"),
         flash           = require("express-flash"),
         Session         = require("express-session");
+        dotenv          = require('dotenv');
 
 const app = express();
+dotenv.config();
 
 // PASSPORT CONFIG
 require("./config/passport")(passport);
 
-// DB Config
-const db = require("./config/keys").mongoURI;
-
 // Connect to MongoDB
-mongoose.connect(db)
+mongoose
+    .connect(process.env.MONGO_URI)
     .then( () => { console.log("MongoDB Connected") })
     .catch( (err) => { console.log(err) });
 
@@ -30,7 +30,7 @@ app.use(express.json());
 // Express Session
 app.use(
     Session({
-        secret: "This is an ECommerce site",
+        secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false
     })
@@ -58,8 +58,14 @@ app.use('/', require('./routes/index.js'));
 // User routes includes authentication
 app.use('/user', require('./routes/user.js'));
 
+// Listing routes
+app.use('/listing', require('./routes/listing.js'));
+
+// Admin routes, (needs to be reconfigured)
+// app.use('/admin', require('./routes/admin.js'));
+
 // Start server
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT,  () => {
-    console.log("App is running!");
+    console.log(`Server started on port: ${PORT}`);
 });

@@ -12,24 +12,24 @@ const mongoose = require("mongoose");
  *          user_id,
  *          rating,
  *          comment,
- *          images,
+ *          images = [],
  *      }],
  *      average_rating,
  *      stocks = [{
- *          colour,
+ *          colour = {name, code},
  *          _s,
  *          _m,
  *          _l,
  *          _xl,
- *          images
+ *          images = []
  *      }]
  * }
  * 
  * 1) name, description, gender, category, price and stocks are required fields
  * 2) name => product name
  * 3) description => product description
- * 4) gander => m is for male, f for female, and u (unisex) will be shown to both
- * 5) category => must be one of t-shirt, shirt, bottoms, oterwear, headwear, socks, accessories
+ * 4) gander => man, woman, and unisex (will be shown to both)
+ * 5) category => must be one of upperwear, bottoms, outerwear, knitwear, accessories
  * 6) price => must be a positive number
  * 7) reviews => 
  *      a) if a reviews is added then user_id and rating will be required fields
@@ -39,9 +39,10 @@ const mongoose = require("mongoose");
  *      e) images => maximum 3 customer images from each customer
  * 8) average_rating => rating = stars, count = no. of ratings
  * 9) stocks => (contains atleast one element) each element of this array represents stock size for each colour
- *      a) colour => colour of the product (say x)
+ *      a) colour => colour name and colour code of the product (say x and #yyy)
  *      b) _s, _m, _l, _xl => represnts the quantity of colour x having size small, medium, large and extra large
  *      c) images => maximum 5 images for colour x of the product
+ *      d) for products having no relation with size, _s will be the stock size (_m, _l, _xl will be 0)
  */
 
 const productSchema = new mongoose.Schema({
@@ -55,12 +56,12 @@ const productSchema = new mongoose.Schema({
     },
     gender: {
         type: String,
-        enum: ['m', 'f', 'u'],
+        enum: ['man', 'woman', 'unisex'],
         required: true
     },
     category: {
         type: String,
-        // enum: ['t-shirt', 'shirt', 'bottoms', 'oterwear', 'headwear', 'socks', 'accessories'],
+        enum: ['upperwear', 'bottoms', 'outerwear', 'knitwear', 'accessories'],
         required: true
     },
     price: {
@@ -81,12 +82,9 @@ const productSchema = new mongoose.Schema({
                 required: true
             },
             comment: {
-                type: string
+                type: String
             },
-            images: {
-                type: [ String ],
-                validate: [arrayLimit, 3, '{PATH} exceeds the limit of 3']
-            }
+            images: [String]
         }
     ],
     average_rating: {
@@ -103,7 +101,10 @@ const productSchema = new mongoose.Schema({
         type: [
             {
                 colour: {
-                    type: String,
+                    type: {
+                        name: String,
+                        code: String
+                    },
                     required: true
                 },
                 _s: {
@@ -126,18 +127,11 @@ const productSchema = new mongoose.Schema({
                     min: 0,
                     required: true
                 },
-                images: {
-                    type: [ String ],
-                    validate: [arrayLimit, 5, '{PATH} exceeds the limit of 5']
-                }
+                images: [String]
             }
         ],
         required: true
     }
 });
-
-arrayLimit = (arr, length) => {
-    return arr.length <= length;
-}
 
 module.exports = mongoose.model("Product", productSchema);
