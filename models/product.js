@@ -61,7 +61,7 @@ const productSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        enum: ['upperwear', 'bottoms', 'outerwear', 'knitwear', 'accessories'],
+        enum: ['tshirt', 'shirt', 'bottoms', 'outerwear', 'knitwear', 'accessories'],
         required: true
     },
     price: {
