@@ -11,52 +11,93 @@
     <main>
       <%- include('partials/navbar.ejs') %>
       <!-- Product Body -->
+      <!-- By default it loads the stock[0] data. -->
+      <script type="text/javascript">
+        let product = {
+          id : '<%= product._id %>',
+          name : '<%= product.name %>',
+          description : '<%= product.description %>',
+          gender : '<%= product.gender %>',
+          category : '<%= product.category %>',
+          price : '<%= product.price %>',
+          stocks : <%- JSON.stringify(product.stocks) %>,
+          reviews : <%- JSON.stringify(product.reviews) %>,
+          average_rating : <%- product.average_rating %>,
+        };
+        // color map data-structure :
+        let stockMap = new Map();
+        product.stocks.forEach((stock, i) => {
+          let size_arr = [stock._s, stock._m, stock._l, stock._xl];
+          let data = {
+            images : stock.images,
+            sizes : size_arr
+          };
+          let code = stock.colour.code.substr(1);
+          stockMap.set(code, data);
+        });
+      </script>
       <div class="jumbo-box">
         <div class="product-body">
-          <div class="product-image" style="background-image: url(https://static.zara.net/photos///2021/I/0/2/p/9240/303/712/2/w/563/9240303712_1_1_1.jpg?ts=1630068640859)"></div>
+          <div class="image-container">
+            <div class="control-icon" id="prev-image" onclick="prevClick();"></div>
+            <% product.stocks[0].images.forEach((image, index) => {
+              if(index == 0){ %>
+              <div class="product-image active" style="background-image: url(<%= image %>)"></div>
+            <% } else { %>
+              <div class="product-image" style="background-image: url(<%= image %>)"></div>
+            <% }}); %>
+            <div class="control-icon" id="next-image" onclick="nextClick();"></div>
+          </div>
           <div class="product-detail">
-            <h1>Leather Jacket</h1>
+            <h1><%= product.name %></h1>
             <ul class="categories">
-              <li>Men</li>
-              <li>Outerwear</li>
+              <li><%= product.gender %></li>
+              <li><%= product.category %></li>
             </ul>
             <div class="rating-container">
               <ul class="rating">
-                <li class="star active">&starf;</li>
-                <li class="star active">&starf;</li>
-                <li class="star active">&starf;</li>
-                <li class="star">&starf;</li>
-                <li class="star">&starf;</li>
+              <% let rating = product.average_rating.rating;
+                 for(let i = 0; i < rating; i++) {  %>
+                   <li class="star active">&starf;</li>
+                <% }
+                for(let i = 0; i < 5 - rating; i++) {  %>
+                  <li class="star">&starf;</li>
+               <% } %>
               </ul>
-              <p>(1.5k customer review)</p>
+              <p> (<%= product.reviews.length %> customer review) </p>
             </div>
             <p>
-              Lorem Ipsum has been the industry's standard dummy text ever since
-              the 1500s, when an unknown printer took a galley of type and scrambled
-              it to make a type specimen book. It has survived not only five
-              centuries.
+              <%= product.description %>
             </p>
             <div class="bootstrap-wrapper">
               <div class="row">
                 <div class="col-md-4">
                   <p>Price :</p>
-                  <h3>$117.99</h3>
+                  <h3>₹ <%= product.price %></h3>
                 </div>
                 <div class="col-md-4">
                   <p>Color :</p>
                   <ul class="color-list">
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                  <% product.stocks.forEach((stock, index) => {
+                    if(index == 0){ %>
+                    <li class="product-color selected" style="background : <%= stock.colour.code %>;" id="<%= stock.colour.code.substr(1); %>"></li>
+                    <% }else{ %>
+                    <li class="product-color" style="background : <%= stock.colour.code %>" id="<%= stock.colour.code.substr(1); %>"></li>
+                  <% }}); %>
                   </ul>
                 </div>
                 <div class="col-md-4">
                   <p>Size :</p>
                   <ul class="size-list">
-                    <li>S</li>
-                    <li>M</li>
-                    <li>L</li>
-                    <li>XL</li>
+                  <% if(product.stocks[0]._s > 0){ %>
+                      <li>S</li>
+                  <% }if(product.stocks[0]._m > 0){ %>
+                      <li>M</li>
+                  <% }if(product.stocks[0]._l > 0){ %>
+                      <li>L</li>
+                  <% }if(product.stocks[0]._xl > 0){ %>
+                      <li>XL</li>
+                  <% } %>
                   </ul>
                 </div>
               </div>
@@ -93,4 +134,76 @@
   <script type="text/javascript" src="/js/_thirdparty/zeynep.min.js"></script>
   <script type="text/javascript" src="/js/_general/sidebar-interaction.js"></script>
   <script type="text/javascript" src="/js/Product/Product_core.js"></script>
+  <script type="text/javascript">
+    // Product image carousel.
+    function prevClick()
+    {
+      let images = $('.product-image');
+      let n = images.length;
+      let curr;
+
+      // current active image
+      for(let i = 0; i<images.length; i++)
+      {
+        if($(images[i]).hasClass('active'))
+          curr = i;
+      }
+
+      // activate ((curr - 1 + n) % n)th image
+      $(images[curr]).removeClass('active');
+      $(images[(curr - 1 + n) % n]).addClass('active');
+    }
+
+    function nextClick()
+    {
+      let images = $('.product-image');
+      let n = images.length;
+      let curr;
+
+      // current active image
+      for(let i = 0; i<images.length; i++)
+      {
+        if($(images[i]).hasClass('active'))
+          curr = i;
+      }
+
+      // activate ((curr + 1) % n)th image
+      $(images[curr]).removeClass('active');
+      $(images[(curr + 1) % n]).addClass('active');
+    }
+
+
+    // Product page interaction.
+    $('.product-color').click(function(){
+      let id = $(this).attr('id');
+      if($('#'+id).hasClass('selected'))
+        return;
+
+      let data = stockMap.get(id);
+      // populate image based on selected color
+      let image_container = document.getElementsByClassName('image-container')[0];
+      image_container.innerHTML = "<div class='control-icon' id='prev-image' onclick='prevClick();'></div>";
+      data.images.forEach((image, i) => {
+        if(i == 0)
+          image_container.innerHTML += `<div class="product-image active" style="background-image: url(${image})"></div>`;
+        else
+          image_container.innerHTML += `<div class="product-image" style="background-image: url(${image})"></div>`;
+      });
+      image_container.innerHTML += `<div class="control-icon" id="next-image" onclick="nextClick();"></div>`;
+
+      // populate size based on selected color.
+      let size_list = document.getElementsByClassName('size-list')[0];
+      size_list.innerHTML = "";
+      data.sizes.forEach((size, i) => {
+        if(i == 0 && size)
+          size_list.innerHTML += "<li>S</li>";
+        if(i == 1 && size)
+          size_list.innerHTML += "<li>M</li>";
+        if(i == 2 && size)
+          size_list.innerHTML += "<li>L</li>";
+        if(i == 3 && size)
+          size_list.innerHTML += "<li>XL</li>";
+      });
+    });
+  </script>
 </html>
