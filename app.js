@@ -66,6 +66,9 @@ app.use('/listing', require('./routes/listing.js'));
 
 // Start server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT,  () => {
+let server = app.listen(PORT,  () => {
     console.log(`Server started on port: ${PORT}`);
 });
+
+// Export the connection module for endpoint testing.
+module.exports = server;

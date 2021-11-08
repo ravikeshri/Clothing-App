@@ -16,6 +16,17 @@ router.get('/', isLoggedIn, async (req, res) => {
     }
 });
 
+// Listing testing
+router.get('/test', async (req, res) => {
+    try {
+        let products = await Product.find({category: 'tshirt'});
+        res.status(200).send(products);
+    } catch(err) {
+        console.error(err);
+        res.status(404).send(err);
+    }
+});
+
 // all t-shirts
 router.get('/tshirts', isLoggedIn, async (req, res) => {
     try {
