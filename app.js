@@ -62,7 +62,7 @@ app.use('/user', require('./routes/user.js'));
 app.use('/listing', require('./routes/listing.js'));
 
 // Admin routes, (needs to be reconfigured)
-// app.use('/admin', require('./routes/admin.js'));
+app.use('/admin', require('./routes/admin.js'));
 
 // Start server
 const PORT = process.env.PORT || 3000;
