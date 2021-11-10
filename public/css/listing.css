@@ -83,6 +83,18 @@ h4
 {
     background-image: url('../media/icons/sock.png');
 }
+.shirt-icon
+{
+  background-image: url('../media/icons/shirt.png');
+}
+.sweater-icon
+{
+  background-image: url('../media/icons/sweater.png');
+}
+.long-coat-icon
+{
+  background-image: url('../media/icons/long-coat.png');
+}
 .accessories-icon
 {
     background-image: url('../media/icons/accessories.png');

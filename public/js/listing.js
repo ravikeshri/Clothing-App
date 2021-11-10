@@ -14,12 +14,12 @@ function categoryFind()
 {
   let x = window.location.href.split('/');
   let category = x[x.length - 1];
-  if(category == "tshirts")
+  if(category == "tshirt")
   {
     $('.category-list > div').eq(0).addClass('active');
     $('.category-list > div').eq(0).children().eq(0).addClass('active');
   }
-  if(category == "shirts")
+  if(category == "shirt")
   {
     $('.category-list > div').eq(1).addClass('active');
     $('.category-list > div').eq(1).children().eq(0).addClass('active');
@@ -29,12 +29,12 @@ function categoryFind()
     $('.category-list > div').eq(2).addClass('active');
     $('.category-list > div').eq(2).children().eq(0).addClass('active');
   }
-  if(category == "outerwears")
+  if(category == "outerwear")
   {
     $('.category-list > div').eq(3).addClass('active');
     $('.category-list > div').eq(3).children().eq(0).addClass('active');
   }
-  if(category == "knitwears")
+  if(category == "knitwear")
   {
     $('.category-list > div').eq(4).addClass('active');
     $('.category-list > div').eq(4).children().eq(0).addClass('active');
