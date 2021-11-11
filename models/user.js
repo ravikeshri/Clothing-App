@@ -12,7 +12,10 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    // roles can be : create, read, update, delete
+    // admin can have all 4 whereas user can have only read permission
+    roles: [ String ] 
 });
 
 module.exports = mongoose.model("User", userSchema);

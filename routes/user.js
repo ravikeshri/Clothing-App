@@ -57,7 +57,8 @@ router.post('/register', forwardAuthenticated, (req, res) => {
         const newUser = new User({
             fname: fname.trim(),
             email: email.trim(),
-            password: password
+            password: password,
+            roles: ['read']
         });
 
         bcrypt.genSalt(10, (err, salt) => {
@@ -83,7 +84,7 @@ router.post('/login', forwardAuthenticated, (req, res, next) => {
         console.log(err);
         res.redirect("/");
     } else {
-        if (user) {
+        if (user && user.roles && user.roles.indexOf('read') != -1 && user.roles.length < 4) {
           passport.authenticate('local', {
             successRedirect: '/homepage',
             failureRedirect: '/user/login',
